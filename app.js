@@ -1,5 +1,5 @@
-// returns the first element that matches from the selector value
 
+// returns the first element that matches from the selector value
 const puzzleBoard = document.querySelector('#puzzle');
 const solveButton = document.querySelector('#solve-button');
 
@@ -17,7 +17,7 @@ for (let i = 0; i < squares; i++) {
     
     //only allows number in this input - create max and min
     inputElement.setAttribute('type', 'number');
-    inputElement.setAttribute('min', '0');
+    inputElement.setAttribute('min', '1');
     inputElement.setAttribute('max', '9');
 
     puzzleBoard.appendChild(inputElement);
@@ -49,18 +49,14 @@ for (let i = 0; i < squares; i++) {
 
 }//for loop
 
-
-//calling the api
-//https://rapidapi.com/sosier/api/solve-sudoku
 const solve = () => {
-    const axios = require("axios");
 
     const options = {
     method: 'POST',
     url: 'https://solve-sudoku.p.rapidapi.com/',
     headers: {
         'content-type': 'application/json',
-        'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+        'X-RapidAPI-Key': '2ab7a712a0msh8f8d6ec16910a13p1c1f5fjsne62f1f4c9e78',
         'X-RapidAPI-Host': 'solve-sudoku.p.rapidapi.com'
     },
     data: '{"puzzle":"2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3"}'
@@ -73,6 +69,4 @@ const solve = () => {
     });
 }
 
-
-
-solveButton.addEventListener('click', joinValues)
+solveButton.addEventListener('click', solve)
