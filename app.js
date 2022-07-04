@@ -2,13 +2,13 @@
 // returns the first element that matches from the selector value
 const puzzleBoard = document.querySelector('#puzzle');
 const solveButton = document.querySelector('#solve-button');
+const solutionDisplay = document.querySelector('#solution');
 
 // 9x9 square --> 81 squares needed 
 const squares = 81;
 
 //array for submissions
 const submissions = [];
-
 
 // create the squares we want to put in the puzzle
 for (let i = 0; i < squares; i++) {
@@ -20,8 +20,20 @@ for (let i = 0; i < squares; i++) {
     inputElement.setAttribute('min', '1');
     inputElement.setAttribute('max', '9');
 
+    //adding colors 
+    if ( 
+        ((i%9==0 || i%9==1 || i%9==2) && i<21) || 
+        ((i%9==6 || i%9==7 || i%9==8) && i<27) || 
+        ((i%9==3 || i%9==4 || i%9==5) && (i > 27 && i < 53)) || 
+        ((i%9==0 || i%9==1 || i%9==2) && i>53) || 
+        ((i%9==6 || i%9==7 || i%9==8) && i>53)
+    ) {
+        //odd-section is the class
+        inputElement.classList.add('odd-section')
+    }
+
     puzzleBoard.appendChild(inputElement);
-}
+} //for loop 
 
 // get all the values we can get in the input and then change them into an array
 const joinValues = () => {
@@ -59,6 +71,14 @@ const populateValues = (isSolvable, solution) => {
         inputs.forEach((input, i) => {
             input.value = solution[i]
         })
+
+        //.innerHTML --> returns the text in the second layer
+        solutionDisplay.innerHTML = 'This is the answer'
+   
+    }//if
+
+   else { 
+        solutionDisplay.innerHTML = 'This is not solvable'
    }
 
 }//populate values
@@ -96,5 +116,5 @@ const solve = () => {
     });
 }
 
-//allows for the solve button to work in the event that it is cicked
+//allows for the solve button to work in the event that it is clicked
 solveButton.addEventListener('click', solve)
