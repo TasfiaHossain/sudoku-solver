@@ -88,32 +88,18 @@ const solve = () => {
     joinValues();
     const data = submissions.join('')
     console.log('data', data)
-   
-    const options = {
+
+    fetch('http://localhost:8000/solve', {
         method: 'POST',
-        url: 'https://solve-sudoku.p.rapidapi.com/',
-        headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': '2ab7a712a0msh8f8d6ec16910a13p1c1f5fjsne62f1f4c9e78',
-            'X-RapidAPI-Host': 'solve-sudoku.p.rapidapi.com'
-        },
-        
-        data: {
-            puzzle: data
+        header: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         }
-    };
-
-    axios.request(options).then(function (response) {
-        console.log(response.data);
-
-        // need to get into the response data and find the solution --> populate values
-
-        populateValues(response.data.solvable, response.data.solution)
-
-
-    }).catch(function (error) {
-        console.error(error);
-    });
+    })  .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+            console.error('Error:', error)
+        })
 }
 
 //allows for the solve button to work in the event that it is clicked
