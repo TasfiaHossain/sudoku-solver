@@ -3,6 +3,8 @@
     /* 50*9 */
     width: 450px; 
     height: 450px;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 #puzzle input {
@@ -11,9 +13,20 @@
     box-sizing: border-box;
     border-spacing: 0;
     border: 1px grey solid;
+    text-align: center;
 }
 
 
 .odd-section {
     background-color: lightgray;
 }
+
+/* .title-style{
+    text-align: center;
+}
+
+.solve-button {
+    text-align: center;
+    margin: auto;
+    font-size: 50px;
+} */

@@ -73,7 +73,7 @@ const populateValues = (isSolvable, solution) => {
         })
 
         //.innerHTML --> returns the text in the second layer
-        solutionDisplay.innerHTML = 'This is the answer'
+        solutionDisplay.innerHTML = 'This is the solution'
    
     }//if
 
