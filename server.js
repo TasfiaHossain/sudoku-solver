@@ -9,7 +9,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.post('/solve', (req,rest) => {
+app.post('/solve', (req,res) => {
     const options = {
         method: 'POST',
         url: 'https://solve-sudoku.p.rapidapi.com/',
