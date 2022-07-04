@@ -49,9 +49,22 @@ const joinValues = () => {
 }//joinValues
 
 
+const populateValues = (isSolvable, solution) => {
+
+   const inputs = document.querySelectorAll('input')
+
+   //if the game is solvable and there is a solution, then:
+   if(isSolvable && solution){
+        //we will get each input value
+        inputs.forEach((input, i) => {
+            input.value = solution[i]
+        })
+   }
+
+}//populate values
+
 
 const solve = () => {
-
     joinValues();
     const data = submissions.join('')
     console.log('data', data)
@@ -72,6 +85,12 @@ const solve = () => {
 
     axios.request(options).then(function (response) {
         console.log(response.data);
+
+        // need to get into the response data and find the solution --> populate values
+
+        populateValues(response.data.solvable, response.data.solution)
+
+
     }).catch(function (error) {
         console.error(error);
     });
