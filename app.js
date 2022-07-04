@@ -63,7 +63,7 @@ const populateValues = (isSolvable, solution) => {
 
 }//populate values
 
-
+// API 
 const solve = () => {
     joinValues();
     const data = submissions.join('')
@@ -96,4 +96,5 @@ const solve = () => {
     });
 }
 
+//allows for the solve button to work in the event that it is cicked
 solveButton.addEventListener('click', solve)
