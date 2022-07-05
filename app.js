@@ -89,12 +89,14 @@ const solve = () => {
     const data = submissions.join('')
     console.log('data', data)
 
-    fetch('http://localhost:8000/solve', {
+    //will trigger backend
+    fetch('http://localhost:8800/solve', {
         method: 'POST',
         header: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
-        }
+        },
+        
     })  .then(response => response.json())
         .then(data => console.log(data))
         .catch((error) => {

@@ -1,4 +1,5 @@
-const PORT = 8000
+
+const PORT = 8800;
 const axios = require('axios').default
 const express = require('express')
 const cors = require('cors')
@@ -9,7 +10,11 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.post('/solve', (req,rest) => {
+// app.get("/", (req, res) => {
+//     res.send({message: "hello"})
+// })
+
+app.post('/solve', (req,res) => {
     const options = {
         method: 'POST',
         url: 'https://solve-sudoku.p.rapidapi.com/',
@@ -26,14 +31,12 @@ app.post('/solve', (req,rest) => {
 
     axios.request(options).then(function (response) {
         console.log(response.data);
-
         // need to get into the response data and find the solution --> populate values
-
-        response.json(response.data)
+        res.json(response.data)
 
     }).catch(function (error) {
         console.error(error);
-    });
-})
+      });
+    })
 
 app.listen(PORT,() => console.log('server listening on PORT ${PORT}'))
