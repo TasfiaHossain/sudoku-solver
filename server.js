@@ -10,10 +10,13 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+<<<<<<< HEAD
 // app.get("/", (req, res) => {
 //     res.send({message: "hello"})
 // })
 
+=======
+>>>>>>> 69db61295e1624dd96bf04259ddeee609da09a81
 app.post('/solve', (req,res) => {
     const options = {
         method: 'POST',
